@@ -2,12 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import { ApolloProvider } from '@apollo/client';
+import { StoreProvider } from 'easy-peasy';
+import client from './apollo';
+import store from './store';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <ApolloProvider client={client}>
+    <StoreProvider store={store}>
+      <App />
+    </StoreProvider>
+  </ApolloProvider>,
   document.getElementById('root')
 );
 
